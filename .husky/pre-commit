@@ -38,9 +38,9 @@ if [ -z "$husky_skip_init" ]; then
     exit 1
   fi
 
-  # Run yarn check:types
-  debug "Running yarn check:types"
-  yarn check:types
+  # Run pnpm check:types
+  debug "Running pnpm check:types"
+  pnpm check:types
 
   # Check the exit status of the previous command
   if [ $? -ne 0 ]; then
@@ -48,9 +48,9 @@ if [ -z "$husky_skip_init" ]; then
     exit 1
   fi
 
-  # Run yarn lint
-  debug "Running yarn lint"
-  yarn lint
+  # Run pnpm lint
+  debug "Running pnpm lint"
+  pnpm lint
 
   # Check the exit status of the previous command
   if [ $? -ne 0 ]; then
@@ -58,19 +58,19 @@ if [ -z "$husky_skip_init" ]; then
     exit 1
   fi
 
-  # Run yarn check:format
-  debug "Running yarn check:format"
-  yarn check:format
+  # Run pnpm check:format
+  debug "Running pnpm check:format"
+  pnpm check:format
 
   # Check the exit status of the previous command
   if [ $? -ne 0 ]; then
-    echo "husky - $hook_name hook Code formatting check failed. Please format your code with \`yarn format\`." >&2
+    echo "husky - $hook_name hook Code formatting check failed. Please format your code with \`pnpm format\`." >&2
     exit 1
   fi
 
-  # Run yarn test:ci
-  debug "Running yarn test:ci"
-  yarn test:ci
+  # Run pnpm test:ci
+  debug "Running pnpm test:ci"
+  pnpm test:ci
 
   # Check the exit status of the previous command
   if [ $? -ne 0 ]; then

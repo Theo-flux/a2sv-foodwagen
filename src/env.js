@@ -7,7 +7,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    NODE_ENV: z.enum(['development', 'test', 'production', 'preview']).default('development'),
+    NODE_ENV: z.enum(['development', 'test', 'production', 'preview']).default('development')
   },
 
   /**
@@ -16,7 +16,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    NEXT_PUBLIC_API_BASE_URL: z.url(),
+    NEXT_PUBLIC_API_BASE_URL: z.url()
   },
 
   /**
@@ -28,8 +28,7 @@ export const env = createEnv({
       process.env.NODE_ENV === 'production'
         ? process.env.NEXT_PUBLIC_VERCEL_ENV
         : process.env.NODE_ENV,
-    NEXT_PUBLIC_API_BASE_URL:
-      process.env.NEXT_PUBLIC_API_BASE_URL,
+    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true

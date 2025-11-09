@@ -34,7 +34,7 @@ const InputSelect = forwardRef<HTMLInputElement, ISelectFormProps>(
           </FormLabel>
         )}
         <Select {...{ ref }} {...props}>
-          <FormControl className="w-full font-grotesk">
+          <FormControl className="font-grotesk w-full">
             <SelectTrigger>
               <SelectValue placeholder={placeholder ?? ''} />
             </SelectTrigger>
