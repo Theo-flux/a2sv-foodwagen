@@ -7,5 +7,12 @@ export const food = {
       keys: () => [FOOD.GET_ALL, name] as const,
       params: { name }
     };
+  },
+
+  getFoodByID(id: string) {
+    return {
+      path: FOOD.BY_ID.replace(':id', id),
+      keys: () => [FOOD.GET_ALL, FOOD.BY_ID, id] as const
+    };
   }
 };

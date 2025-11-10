@@ -20,7 +20,6 @@ const InputField = forwardRef<HTMLInputElement, IInputProps>(
         {label && (
           <FormLabel className="flex items-center justify-start space-x-1">
             <p>{label}</p>
-            {props.required && <small className="text-error">*</small>}
           </FormLabel>
         )}
         <FormControl>

@@ -93,7 +93,13 @@ const MealCard = ({ meal }: { meal: TFoodItem }) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-fit">
-              <DropdownMenuItem>Edit</DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() =>
+                  toggleModals({ open: true, name: AppModals.ADD_FOOD_MODAL, id: meal.id })
+                }
+              >
+                Edit
+              </DropdownMenuItem>
               <DropdownMenuItem
                 variant="destructive"
                 onClick={() =>
