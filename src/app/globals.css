@@ -33,6 +33,11 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-west-side: var(--west-side);
+  --color-tango: var(--tango);
+  --color-tundora: var(--tundora);
+  --color-silver: var(--silver);
+  --color-black: var(--black);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -41,6 +46,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-source-sans: var(--font-source-sans);
 }
 
 :root {
@@ -51,7 +57,12 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.832 0.164 80.05);
+  --west-side: oklch(77.39% 0.172 64.50);
+  --tango: oklch(69.28% 0.176 46.32);
+  --tundora: oklch(37.91% 0.000 0);
+  --silver: oklch(79.21% 0.000 0);
+  --black: oklch(24.78% 0.000 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
