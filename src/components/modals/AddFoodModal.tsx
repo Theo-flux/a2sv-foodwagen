@@ -17,18 +17,28 @@ import { Form, FormField } from '../ui/form';
 import InputField from '../fields/InputField';
 import InputNumberField from '../fields/InputNumber';
 
-export const AddFoodSchema = z.object({
-  name: z
-    .string({ error: 'Food name is required.' })
-    .max(35, 'Specified name must not exceed 35 characters.')
-    .trim(),
-  food_image: z.url({ error: 'Food image is required' }).trim(),
-  food_rating: z.string({ error: 'Food rating is required' }).trim(),
-  food_price: z.string({ error: 'Food price is required' }),
-  restaurant_image: z.url({ error: 'Restaurant image is required' }).trim(),
-  restaurant_name: z.string({ error: 'Restaurant name is required' }).trim(),
-  restaurant_status: z.string({ error: 'Restaurant status is required' }).trim()
-});
+export const AddFoodSchema = z
+  .object({
+    name: z.string({ error: 'Food name is required.' }).trim(),
+    food_image: z.url({ error: 'Please enter a valid URL' }).trim(),
+    food_rating: z.string({ error: 'Food rating is required' }).trim(),
+    Price: z.string({ error: 'Food price is required' }),
+    restaurant_image: z.url({ error: 'Please enter a valid URL' }).trim(),
+    restaurant_name: z.string({ error: 'Restaurant name is required' }).trim(),
+    restaurant_status: z.string({ error: 'Restaurant status is required' }).trim()
+  })
+  .superRefine((data, ctx) => {
+    const { food_rating } = data;
+    const parsedFoodRating = Number(food_rating);
+
+    if (parsedFoodRating > 5) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['food_rating'],
+        message: 'Food rating should be between 0 and 5.'
+      });
+    }
+  });
 
 export type TAddFoodSchema = z.infer<typeof AddFoodSchema>;
 
@@ -49,7 +59,7 @@ const AddFoodModal = () => {
     const food_rating = data.food_rating?.toString() || data.rating;
     const restaurant_image = data.restaurant_image || data.logo;
     const restaurant_name = data.restaurant_name || data.name;
-    const food_price = data.Price;
+    const Price = data.Price;
     const restaurant_status =
       data.restaurant_status || data.status || data.open ? 'open' : 'closed';
     return {
@@ -57,7 +67,7 @@ const AddFoodModal = () => {
       food_image,
       food_rating,
       restaurant_image,
-      food_price,
+      Price,
       restaurant_name,
       restaurant_status
     };
@@ -162,7 +172,6 @@ const AddFoodModal = () => {
                     label="Food rating"
                     thousandSeparator=","
                     decimalSeparator="."
-                    prefix="⭐"
                     decimalScale={1}
                     min={0}
                     max={5}
@@ -171,7 +180,7 @@ const AddFoodModal = () => {
                     allowLeadingZeros={false}
                     valueIsNumericString={true}
                     onValueChange={(values) => {
-                      onChange(values.formattedValue);
+                      onChange(values.value);
                     }}
                     {...rest}
                   />
@@ -179,7 +188,7 @@ const AddFoodModal = () => {
               />
 
               <FormField
-                name="food_price"
+                name="Price"
                 render={({ field: { onChange, ...rest } }) => (
                   <InputNumberField
                     required
@@ -193,7 +202,7 @@ const AddFoodModal = () => {
                     allowLeadingZeros={false}
                     valueIsNumericString={true}
                     onValueChange={(values) => {
-                      onChange(values.formattedValue);
+                      onChange(values.value);
                     }}
                     {...rest}
                   />
@@ -240,7 +249,7 @@ const AddFoodModal = () => {
                 form="food-form"
                 className="w-full md:w-[48%]"
               >
-                {isLoading.isAddingFood ? 'Saving' : 'Save'}
+                {isLoading.isAddingFood ? 'Updating food' : 'Save'}
               </Button>
             ) : (
               <Button
@@ -251,7 +260,7 @@ const AddFoodModal = () => {
                 form="food-form"
                 className="w-full md:w-[48%]"
               >
-                {isLoading.isAddingFood ? 'Adding' : 'Add'}
+                {isLoading.isAddingFood ? 'Adding food' : 'Add'}
               </Button>
             )}
             <Button

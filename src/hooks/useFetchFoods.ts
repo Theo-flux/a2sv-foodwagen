@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { food } from './FetchFactoryKey';
 import { useCallback } from 'react';
 
-export const useFetchMeals = (name?: string): IQueryHookResponse<Array<TFoodItem> | undefined> => {
+export const useFetchFoods = (name?: string): IQueryHookResponse<Array<TFoodItem> | undefined> => {
   const meta = food.getFood(name);
   const memoizedSelect = useCallback((resp: Array<TFoodItem>) => resp, []);
 

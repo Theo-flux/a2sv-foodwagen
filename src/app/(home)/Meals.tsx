@@ -1,6 +1,6 @@
 'use client';
 import MealCard from '@/components/MealCard';
-import { useFetchMeals } from '@/hooks/useFetchMeals';
+import { useFetchFoods } from '@/hooks/useFetchFoods';
 import MealCardSkeleton from './MealCardSkeleton';
 import MealNotFound from './MealNotFound';
 import { observer } from 'mobx-react-lite';
@@ -9,7 +9,7 @@ import { useSearchParams } from 'next/navigation';
 const Meals = () => {
   const params = useSearchParams();
   const name = params.get('name') as string;
-  const { data, isLoading, isFetching, status } = useFetchMeals(name);
+  const { data, isLoading, isFetching, status } = useFetchFoods(name);
 
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col space-y-8 px-4 py-20 xl:px-0">
