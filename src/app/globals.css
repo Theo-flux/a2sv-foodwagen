@@ -49,6 +49,19 @@
   --font-source-sans: var(--font-source-sans);
 }
 
+@theme {
+  @keyframes slide-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -58,11 +71,11 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.832 0.164 80.05);
-  --west-side: oklch(77.39% 0.172 64.50);
+  --west-side: oklch(77.39% 0.172 64.5);
   --tango: oklch(69.28% 0.176 46.32);
-  --tundora: oklch(37.91% 0.000 0);
-  --silver: oklch(79.21% 0.000 0);
-  --black: oklch(24.78% 0.000 0);
+  --tundora: oklch(37.91% 0 0);
+  --silver: oklch(79.21% 0 0);
+  --black: oklch(24.78% 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -129,5 +142,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.5s ease-out forwards;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
   }
 }
