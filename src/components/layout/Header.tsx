@@ -14,7 +14,7 @@ const Header = () => {
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 xl:px-0">
         <Logo />
         <Button
-          className="rounded-xl"
+          size="lg"
           onClick={() => toggleModals({ open: true, name: AppModals.ADD_FOOD_MODAL, id: '' })}
         >
           Add Meal

@@ -29,6 +29,8 @@ type TFoodItem = {
   restaurant_name?: string;
   restaurant_image?: string;
   restaurant_status?: string;
+  avatar?: string;
+  logo?: string;
   image?: string;
   status?: string;
 };

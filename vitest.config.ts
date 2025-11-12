@@ -5,7 +5,8 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom'
+    environment: 'jsdom',
+    setupFiles: ['./vitest.setup.js']
   },
   resolve: {
     alias: {

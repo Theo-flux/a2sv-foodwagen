@@ -10,18 +10,16 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import { useStore } from '@/store';
 import { AppModals } from '@/store/AppConfig/appModalTypes';
-import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 
 const MealCard = ({ meal }: { meal: TFoodItem }) => {
   const {
     AppConfigStore: { toggleModals }
   } = useStore();
-  const foodImage = meal.food_image || meal.image || meal.avatar || '';
+  const foodImage = meal.food_image || meal.image || meal.avatar;
   const foodName = meal.food_name || meal.name;
   const foodRating = meal.food_rating?.toString() || meal.rating;
-  const restaurantLogo = meal.restaurant_image || meal.logo;
-  const restaurantName = meal.restaurant_name || meal.name;
+  const restaurantLogo = meal.restaurant_image || meal.logo || meal.avatar;
   const isOpen = meal.restaurant_status === 'open' || meal.status === 'open' || meal.open;
 
   return (
@@ -71,10 +69,13 @@ const MealCard = ({ meal }: { meal: TFoodItem }) => {
             </figure>
             <div>
               <h3 className="line-clamp-1 text-xl font-bold text-ellipsis text-gray-900">
-                {restaurantName}
+                {foodName}
               </h3>
               <div className="mt-1 flex items-center gap-1">
-                <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                <Star
+                  data-testid="food-rating-star"
+                  className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                />
                 <span className="text-lg font-semibold text-yellow-500">{foodRating}</span>
               </div>
             </div>
@@ -83,6 +84,7 @@ const MealCard = ({ meal }: { meal: TFoodItem }) => {
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger
               asChild
+              data-testid="food-dropdown-trigger"
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -94,6 +96,7 @@ const MealCard = ({ meal }: { meal: TFoodItem }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-fit">
               <DropdownMenuItem
+                data-testid="food-edit-btn"
                 onClick={() =>
                   toggleModals({ open: true, name: AppModals.ADD_FOOD_MODAL, id: meal.id })
                 }
@@ -102,6 +105,7 @@ const MealCard = ({ meal }: { meal: TFoodItem }) => {
               </DropdownMenuItem>
               <DropdownMenuItem
                 variant="destructive"
+                data-testid="food-delete-btn"
                 onClick={() =>
                   toggleModals({ open: true, name: AppModals.DELETE_FOOD_MODAL, id: meal.id })
                 }

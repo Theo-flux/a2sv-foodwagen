@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { QueryClient } from '@tanstack/react-query';
-import QueryClientTestProvider, { QueryClientTest } from './QueryClientProvider';
+import QueryClientTestProvider, { QueryClientTest } from '../test-utils/QueryClientProvider';
 import {
   mockFoodItems,
   getMockFoodsByName,
@@ -10,22 +10,6 @@ import {
 } from '@/__mocks__/food.mock';
 import { useFetchFoods } from '@/hooks/useFetchFoods';
 import foodServer from '@/requests';
-
-vi.mock('@/requests', () => ({
-  default: {
-    get: vi.fn(),
-    post: vi.fn(),
-    put: vi.fn(),
-    delete: vi.fn()
-  }
-}));
-
-vi.mock('@/constants/api', () => ({
-  FOOD: {
-    GET_ALL: '/Food',
-    BY_ID: '/Food/:id'
-  }
-}));
 
 describe('useFetchFoods', () => {
   let queryClient: QueryClient;
@@ -49,7 +33,7 @@ describe('useFetchFoods', () => {
     await waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(result.current.data).toEqual(mockFoodItems);
-    expect(result.current.data).toHaveLength(2);
+    expect(result.current.data).toHaveLength(3);
     expect(result.current.error).toBeNull();
     expect(foodServer.get).toHaveBeenCalledWith('/Food', { params: {} });
   });

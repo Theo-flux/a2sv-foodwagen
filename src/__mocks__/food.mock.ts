@@ -5,10 +5,10 @@ export const mockFoodItems: Array<TFoodItem> = [
     createdAt: '2025-11-10T08:59:15.343Z',
     name: 'Classi Cheddar Smash Burger',
     avatar: 'https://picsum.photos/seed/6UtNCB020L/1083/2301?blur=2',
-    rating: '4.4',
+    rating: '4.5',
     open: true,
     logo: 'https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?auto=format&fit=crop&w=800&q=80',
-    Price: '8.00',
+    Price: '12.99',
     id: '24',
     restaurant_name: 'Burger Barn',
     image:
@@ -21,7 +21,7 @@ export const mockFoodItems: Array<TFoodItem> = [
     name: 'Barrett Shelton',
     avatar: 'https://picsum.photos/seed/qmoV9mhB9L/2223/1914?blur=6',
     rating: '4',
-    open: true,
+    open: false,
     logo: 'https://www.pexels.com/photo/grayscale-photo-of-fish-in-water-12521170/',
     Price: '384',
     id: '55',
@@ -29,6 +29,24 @@ export const mockFoodItems: Array<TFoodItem> = [
       'https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&w=600&h=400&fit=crop',
     restaurant_name: 'Rhea Powell',
     status: 'Closed'
+  },
+
+  {
+    id: '81',
+    name: 'Test Burger',
+    food_name: 'Deluxe Burger',
+    Price: '12.99',
+    rating: '4.5',
+    food_rating: 4.5,
+    restaurant_name: 'Burger Palace',
+    restaurant_status: 'open',
+    food_image: 'https://example.com/burger.jpg',
+    restaurant_image: 'https://example.com/restaurant-logo.jpg',
+    open: true,
+    status: 'open',
+    avatar: 'https://example.com/avatar.jpg',
+    logo: 'https://example.com/logo.jpg',
+    createdAt: '2023-01-01'
   }
 ];
 

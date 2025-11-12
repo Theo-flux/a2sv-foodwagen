@@ -1,26 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { QueryClient } from '@tanstack/react-query';
-import QueryClientTestProvider, { QueryClientTest } from './QueryClientProvider';
+import QueryClientTestProvider, { QueryClientTest } from '../test-utils/QueryClientProvider';
 import { mockApiResponses, getMockFoodById } from '@/__mocks__/food.mock';
 import { useFetchFoodByID } from '@/hooks/useFetchFoodByID';
 import foodServer from '@/requests';
-
-vi.mock('@/requests', () => ({
-  default: {
-    get: vi.fn(),
-    post: vi.fn(),
-    put: vi.fn(),
-    delete: vi.fn()
-  }
-}));
-
-vi.mock('@/constants/api', () => ({
-  FOOD: {
-    GET_ALL: '/Food',
-    BY_ID: '/Food/:id'
-  }
-}));
 
 describe('useFetchFoodByID', () => {
   let queryClient: QueryClient;
