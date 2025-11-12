@@ -77,9 +77,9 @@ describe('useFetchFoods', () => {
       food_image: 'https://pixabay.com/photos/grill-fire-embers-barbecue-food-8225405/',
       food_rating: '4.6',
       Price: '9.99',
-      restaurant_image: 'https://pixabay.com/photos/cooking-fire-southeast-asia-vietnam-4568742/',
+      logo: 'https://pixabay.com/photos/cooking-fire-southeast-asia-vietnam-4568742/',
       restaurant_name: 'La Spag',
-      restaurant_status: 'Open'
+      open: 'Open'
     });
 
     (foodServer.get as any).mockResolvedValueOnce(mockApiResponses.success([customFood]));

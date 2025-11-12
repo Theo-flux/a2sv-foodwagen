@@ -20,12 +20,10 @@ const InputNumberField = forwardRef<HTMLInputElement, IInputProps>(
     const { className, ...restProps } = props;
     return (
       <FormItem className="w-full">
-        <FormLabel className="flex items-center justify-start space-x-1">
-          <p>{label}</p>
-        </FormLabel>
+        <FormLabel className="flex items-center justify-start space-x-1">{label}</FormLabel>
         <FormControl className="w-full">
           <NumericFormat
-            className="placeholder:text-muted-foreground focus-visible:ring-ring flex h-11 w-full rounded-lg bg-neutral-100 px-3 py-1 text-sm transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            className="placeholder:text-muted-foreground focus-visible:ring-ring flex h-11 w-full rounded-lg bg-neutral-100 px-3 py-1 text-sm font-semibold transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
             {...{ ref }}
             {...restProps}
           />

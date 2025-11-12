@@ -18,9 +18,7 @@ const InputField = forwardRef<HTMLInputElement, IInputProps>(
     return (
       <FormItem className="w-full">
         {label && (
-          <FormLabel className="flex items-center justify-start space-x-1">
-            <p>{label}</p>
-          </FormLabel>
+          <FormLabel className="flex items-center justify-start space-x-1">{label}</FormLabel>
         )}
         <FormControl>
           <Input ref={ref} {...props} />

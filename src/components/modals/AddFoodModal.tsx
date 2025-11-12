@@ -16,6 +16,8 @@ import { toast } from '@/constants/toast';
 import { Form, FormField } from '../ui/form';
 import InputField from '../fields/InputField';
 import InputNumberField from '../fields/InputNumber';
+import InputSelect from '../fields/InputSelect';
+import { restaurantStatusOptions } from '@/constants';
 
 export const AddFoodSchema = z
   .object({
@@ -23,9 +25,9 @@ export const AddFoodSchema = z
     food_image: z.url({ error: 'Please enter a valid URL' }).trim(),
     food_rating: z.string({ error: 'Food rating is required' }).trim(),
     Price: z.string({ error: 'Food price is required' }),
-    restaurant_image: z.url({ error: 'Please enter a valid URL' }).trim(),
+    logo: z.url({ error: 'Please enter a valid URL' }).trim(),
     restaurant_name: z.string({ error: 'Restaurant name is required' }).trim(),
-    restaurant_status: z.string({ error: 'Restaurant status is required' }).trim()
+    open: z.string({ error: 'Restaurant status is required' }).trim()
   })
   .superRefine((data, ctx) => {
     const { food_rating } = data;
@@ -57,19 +59,19 @@ const AddFoodModal = () => {
     const food_image = data.food_image || data.image || data.avatar || '';
     const name = data.food_name || data.name;
     const food_rating = data.food_rating?.toString() || data.rating;
-    const restaurant_image = data.restaurant_image || data.logo;
+    const logo = data.restaurant_image || data.logo;
     const restaurant_name = data.restaurant_name || data.name;
     const Price = data.Price;
-    const restaurant_status =
-      data.restaurant_status || data.status || data.open ? 'open' : 'closed';
+    const open = data.open ? 'Open' : 'Closed';
+
     return {
       name,
       food_image,
       food_rating,
-      restaurant_image,
+      logo,
       Price,
       restaurant_name,
-      restaurant_status
+      open
     };
   }, [data, isEditMode]);
 
@@ -217,20 +219,23 @@ const AddFoodModal = () => {
               />
 
               <FormField
-                name="restaurant_image"
+                name="logo"
                 render={({ field }) => (
                   <InputField required label="Restaurant logo (link)" placeholder="" {...field} />
                 )}
               />
 
               <FormField
-                name="restaurant_status"
+                name="open"
                 render={({ field }) => (
-                  <InputField
+                  <InputSelect
                     required
+                    {...field}
+                    items={restaurantStatusOptions}
                     label="Restaurant status (open/close)"
                     placeholder=""
-                    {...field}
+                    defaultValue={field.value}
+                    onValueChange={field.onChange}
                   />
                 )}
               />
