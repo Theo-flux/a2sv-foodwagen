@@ -50,7 +50,7 @@ const DeleteFoodModal = () => {
             disabled={isLoading.isDeletingFood}
             isLoading={isLoading.isDeletingFood}
           >
-            Yes
+            {isLoading.isDeletingFood ? 'Deleting food' : 'Yes'}
           </Button>
           <Button
             type="button"
