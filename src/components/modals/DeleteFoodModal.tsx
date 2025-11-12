@@ -34,7 +34,7 @@ const DeleteFoodModal = () => {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="mt-4 flex items-center justify-between space-x-3">
+        <div className="mt-4 flex flex-col items-center justify-between gap-3 md:flex-row">
           <Button
             type="button"
             size="lg"

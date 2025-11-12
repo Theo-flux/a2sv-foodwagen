@@ -146,7 +146,7 @@ const AddFoodModal = () => {
           <form
             id="food-form"
             onSubmit={form.handleSubmit(onSubmit)}
-            className="relative flex h-[90svh] w-full flex-col justify-between space-y-6 md:h-auto"
+            className="relative flex h-[85svh] w-full flex-col justify-between space-y-6 overflow-y-scroll px-0.5 pb-36 md:h-auto md:pb-0"
           >
             <fieldset
               disabled={isLoading.isAddingFood || isFoodLoading}
@@ -243,7 +243,7 @@ const AddFoodModal = () => {
           </form>
         </Form>
 
-        <DialogFooter className="absolute bottom-0 left-0 w-full px-4 md:static md:bottom-auto md:left-auto md:p-0">
+        <DialogFooter className="absolute bottom-0 left-0 w-full bg-white px-4 md:static md:bottom-auto md:left-auto md:p-0">
           <div className="flex w-full flex-col items-center justify-between gap-4 py-3 md:flex-row md:p-0">
             {isEditMode ? (
               <Button
