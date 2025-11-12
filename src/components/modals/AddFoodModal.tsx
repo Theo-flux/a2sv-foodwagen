@@ -136,7 +136,7 @@ const AddFoodModal = () => {
     <DialogModal closeModal={onClose} isOpen={isOpen.ADD_FOOD_MODAL}>
       <DialogContent
         onInteractOutside={(e) => e.preventDefault()}
-        className="h-screen w-full md:h-auto"
+        className="h-dvh w-full md:h-auto"
       >
         <DialogHeader>
           <DialogTitle>{isEditMode ? 'Edit' : 'Add a'} Meal</DialogTitle>
@@ -146,7 +146,7 @@ const AddFoodModal = () => {
           <form
             id="food-form"
             onSubmit={form.handleSubmit(onSubmit)}
-            className="relative flex h-[85svh] w-full flex-col justify-between space-y-6 overflow-y-scroll px-0.5 pb-36 md:h-auto md:pb-0"
+            className="relative flex h-[85dvh] w-full flex-col justify-between space-y-6 overflow-y-scroll px-0.5 pb-36 md:h-auto md:pb-0"
           >
             <fieldset
               disabled={isLoading.isAddingFood || isFoodLoading}
