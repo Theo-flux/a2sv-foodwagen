@@ -136,7 +136,7 @@ const AddFoodModal = () => {
     <DialogModal closeModal={onClose} isOpen={isOpen.ADD_FOOD_MODAL}>
       <DialogContent
         onInteractOutside={(e) => e.preventDefault()}
-        className="h-svh w-full md:h-auto"
+        className="h-screen w-full md:h-auto"
       >
         <DialogHeader>
           <DialogTitle>{isEditMode ? 'Edit' : 'Add a'} Meal</DialogTitle>
